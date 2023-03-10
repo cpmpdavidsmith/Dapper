@@ -13,7 +13,7 @@ namespace DapperInClass
             _conn = conn;
 		}
 
-        public void CreateDepartment(string Name)
+        public void CreateDepartment(string name)
         {
             _conn.Execute("INSERT INTO departments Name Values(@name);", new { name = name });
         }

@@ -11,9 +11,10 @@ namespace DapperInClass
 {
     class Program
     {
-        //_________________________________________________________________
-        static IConfiguration config = new ConfigurationBuilder()                                 //these 4 lines (14,15,16) will find our app settings file 
+        //these 4 lines (14,15,16) will find our app settings file 
 
+        //_________________________________________________________________
+        static IConfiguration config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
                 .Build();
@@ -25,9 +26,11 @@ namespace DapperInClass
 
         static void Main(string[] args)
         {
-            ListProduct();
+            ListProducts();
+
             DeleteProduct();
-            ListProduct();
+
+            ListProducts();
         }
         public static void DeleteProduct()                                                           //we can use these methods that add user interaction with our Dapper Methods 
         {
@@ -48,7 +51,7 @@ namespace DapperInClass
             Console.WriteLine($"What is the new name you ould like for the product with an id of {productID}?");
             var updatedName = Console.ReadLine();
 
-            prodRepo.UpdatedProductName(productID, updatedName);
+            prodRepo.UpdateProductName(productID, updatedName);
         }
         public static void CreateAndListProducts()
         {
