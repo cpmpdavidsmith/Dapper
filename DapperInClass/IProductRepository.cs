@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace DapperInClass
 {
 	public interface IProductRepository
 	{
-		IEnumerable<Product> GetAllProducts();
+		public IEnumerable<Product> GetAllProducts();
 	}
 }
 
