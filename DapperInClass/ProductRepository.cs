@@ -5,16 +5,22 @@ using Dapper;
 
 namespace DapperInClass
 {
-	public class DapperProductRepository : IProductRepository
+	public class ProductRepository : IProductRepository
 	{
-        //field called _connection of type IDbConnection
-        //the private message is an example oof "encapsulation" where every time an instance is made of line 7, a connection(with password!!) called 'IDbConnection' is run in 'constructor' line 11 and stored in field (which is unaccessable by the world) and is 'private" line 10
-        private readonly IDbConnection _connection;                                                          
-		public DapperProductRepository(IDbConnection connection)                                            
+        //in field:
+        //connection of type IDbConnection is set to PRIVATE making it only
+        //ACCESSABLE in this class...
+        //this Is ENCAPSULATION and positioned to provide connection to the DATABASE
+        //for the METHOD below it...which can be ACCESSED by other classes but
+        //the IDbConnection is not accessed
+        private readonly IDbConnection _connection;
+        //this METHOD   is a CONSTRUCTOR named "DapperProductRepository"
+        //it is a CONSTRUCTOR because its purpose is to make a new INSTANCE of a class. 
+		public ProductRepository(IDbConnection connection)                                            
 		{
             _connection = connection;
 		}
-
+        //the data in the DATABASE is now available in "_connection"
         public void CreateProduct(string name, double price, int categoryID)
         {
             _connection.Execute("INSERT INTO products (Name, Price, CategoryID)" +
@@ -45,6 +51,7 @@ namespace DapperInClass
                 new { productID = productID });
         }
 
+        
     }
 }
 

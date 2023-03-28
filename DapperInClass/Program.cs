@@ -34,7 +34,7 @@ namespace DapperInClass
         }
         public static void DeleteProduct()                                                           //we can use these methods that add user interaction with our Dapper Methods 
         {
-            var prodRepo = new DapperProductRepository(conn);
+            var prodRepo = new ProductRepository(conn);
             Console.WriteLine($"What is the productID of th product you would like to delete:");
             var productID = Convert.ToInt32(Console.ReadLine());
 
@@ -43,7 +43,7 @@ namespace DapperInClass
         }
         public static void UpdateProductName()
         {
-            var prodRepo = new DapperProductRepository(conn);
+            var prodRepo = new ProductRepository(conn);
 
             Console.WriteLine($"What is the productID of the product you would like to update?");
             var productID = Convert.ToInt32(Console.ReadLine());
@@ -55,7 +55,7 @@ namespace DapperInClass
         }
         public static void CreateAndListProducts()
         {
-            var prodRepo = new DapperProductRepository(conn);
+            var prodRepo = new ProductRepository(conn);
 
             Console.WriteLine($"What is the new product name?");
             var prodName = Console.ReadLine();
@@ -96,7 +96,7 @@ namespace DapperInClass
                 Console.WriteLine($"What is the ID of the Department you would like to update?");
                 var id = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine($"What would you like to change the name of the department to?");
-                var nameName = Console.ReadLine();
+                var newName = Console.ReadLine();
                 repo.UpdateDepartment(id, newName);
                 var depts = repo.GetDepartments();
                 foreach (var item in depts)
