@@ -11,8 +11,15 @@
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="MySql.Data" Version="8.0.32.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\net7.0\" />
+    <Folder Include="bin\Debug\net7.0\runtimes\" />
+    <Folder Include="bin\Debug\netcoreapp3.1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\net7.0\appsettings.json" />
   </ItemGroup>
 </Project>

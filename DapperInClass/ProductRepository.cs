@@ -21,12 +21,14 @@ namespace DapperInClass
             _connection = connection;
 		}
         //the data in the DATABASE is now available in "_connection"
+        //CREATE DATA
         public void CreateProduct(string name, double price, int categoryID)
         {
             _connection.Execute("INSERT INTO products (Name, Price, CategoryID)" +
                 "VALUES (@name, @price, @categoryID);"
                 , new { name = name, price = price, categoryID = categoryID});
         }
+
 
         public IEnumerable<Product> GetAllProducts()
         {
@@ -44,7 +46,7 @@ namespace DapperInClass
             _connection.Execute("DELETE FROM reviews WHERE ProductID = @productID;",
                 new { productID = productID });
 
-            _connection.Execute("DELETS FROM sale WHERE ProductID = @productID;",
+            _connection.Execute("DELETE FROM sales WHERE ProductID = @productID;",
                 new { productID = productID });
 
             _connection.Execute("DELETE FROM products WHERE ProductID = @productID;",

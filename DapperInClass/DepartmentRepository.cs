@@ -7,24 +7,31 @@ namespace DapperInClass
 {
 	public class DepartmentRepository : IDepartmentRepository
 	{
-        private readonly IDbConnection _conn;
-		public DepartmentRepository(IDbConnection conn)
+        private readonly IDbConnection _connection;
+        //PRIVATE  method placed in FIELD to allow access to methods within
+        //class
+        //READONLY MODIFIER ensures the field can only be given a value during
+        //its initialization or in its class constructor. 
+		public DepartmentRepository(IDbConnection connection)
 		{
-            _conn = conn;
+            _connection = connection;
 		}
+
+        public IEnumerable<Department> GetAllDepartments()
+        {
+            return _connection.Query<Department>("SELECT * FROM departments;");
+        }//this METHOD gets ALL the DEPARTMENT'S:  NAME    and    DEPARTMENTID
+        //      and stores it in a COLLECTION/LIST....
 
         public void CreateDepartment(string name)
         {
-            _conn.Execute("INSERT INTO departments Name Values(@name);", new { name = name });
+            _connection.Execute("INSERT INTO departments Name Values(@name);", new { name = name });
         }
 
-        public IEnumerable<Department> GetDepartments()
-        {
-            return _conn.Query<Department>("select * FROM departments;");
-        }
+    
         public void UpdateDepartment(int id, string newName)
         {
-            _conn.Execute("UPDATE departments SET Name = @newName WHERE DepartmentID = @id;", new { newName = newName, id = id });
+            _connection.Execute("UPDATE departments SET Name = @newName WHERE DepartmentID = @id;", new { newName = newName, id = id });
         }
     }
 }
